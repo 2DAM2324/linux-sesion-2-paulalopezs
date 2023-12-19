@@ -1,0 +1,66 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2758
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Tahoma-Bold;\f1\fnil\fcharset0 Tahoma;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww29200\viewh18400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs26\fsmilli13280 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Ejercicio 1
+\f1\b0 . Se debe utilizar solamente una vez la orden chmod en cada apartado. Los cambios se har\'e1n en un  archivo concreto del directorio de trabajo (salvo que se indique otra cosa). Cambiaremos uno o varios permisos en  cada apartado (independientemente de que el archivo ya tenga o no dichos permisos) y comprobaremos que  funciona correctamente: \
+\uc0\u8722  Dar permiso de ejecuci\'f3n al \'93resto de usuarios\'94. \
+\uc0\u8722  Dar permiso de escritura y ejecuci\'f3n al \'93grupo\'94. \
+\uc0\u8722  Quitar el permiso de lectura al \'93grupo\'94 y al \'93resto de usuarios\'94. \
+\uc0\u8722  Dar permiso de ejecuci\'f3n al \'93propietario\'94 y permiso de escritura el \'93resto de usuarios\'94. \u8722  Dar permiso de ejecuci\'f3n al \'93grupo\'94 de todos los archivos cuyo nombre comience con la letra \'93e\'94. Nota: Si  no hay m\'e1s de dos archivos que cumplan esa condici\'f3n, se deber\'e1n crear archivos que empiecen con \'93e\'94  y/o modificar el nombre de archivos ya existentes para que cumplan esa condici\'f3n. \
+\
+chmod o+x nombre_del_archivo\
+chmod g+we nombre_del_archivo\
+chmod go-r nombre_del_archivo\
+chmod u+x,o+w nombre_del_archivo\
+touch archivo.1.txt\
+touch e_archivo2.txt\
+touch e_archivo3.txt\
+chmod g+x e*\
+\
+
+\f0\b Ejercicio 2
+\f1\b0 . Utilizando solamente las \'f3rdenes de la sesi\'f3n anterior y los metacaracteres de redirecci\'f3n de salida: \uc0\u8722  Crear un archivo llamado ej31 , que contendr\'e1 el nombre de los archivos del directorio padre del directorio  de trabajo. \
+\uc0\u8722  Crear un archivo llamado ej32 , que contendr\'e1 las dos \'faltimas l\'edneas del archivo creado en el ejercicio  anterior. \
+\uc0\u8722  A\'f1adir al final del archivo ej32 , el contenido del archivo ej31 . \
+\
+ls -1 ../ > ej31\
+tail -n 2 ej31> ej32\
+cat ej31 >> ej32\
+\
+
+\f0\b Ejercicio 3.
+\f1\b0  Utilizando el metacar\'e1cter de creaci\'f3n de cauces y sin utilizar la orden cd: \uc0\u8722  Mostrar por pantalla, el listado (en formato largo) de los \'faltimos 6 archivos del directorio padre en el  directorio de trabajo. \
+\uc0\u8722  La orden wc muestra por pantalla el n\'famero de l\'edneas, palabras y caracteres de un archivo (consulta la  orden man para conocer m\'e1s sobre ella). Utilizando dicha orden, mostrar por pantalla el n\'famero de  caracteres (s\'f3lo ese n\'famero) de los archivos del directorio de trabajo que comiencen por los caracteres \'93e\'94  o \'93f\'94. \
+\
+Ls -1../ | tail -n 6\
+wc -c e* f* \
+\
+
+\f0\b Ejercicio 4.
+\f1\b0  Resuelva cada uno de los siguientes apartados. \
+a) Crear un archivo llamado ejercicio1, que contenga las 17 \'faltimas l\'edneas del texto que proporciona la  orden man para la orden chmod (se debe hacer en una \'fanica l\'ednea de \'f3rdenes y sin utilizar el metacar\'e1cter  \'93;\'94 ). \
+\
+man chmod | tail -n 17 > ejercicio1\
+\
+b) Al final del archivo ejercicio1, a\'f1adir la ruta completa del directorio de trabajo actual. \
+\
+pwd >> ejercicio1\
+\
+c) Usando la combinaci\'f3n de \'f3rdenes mediante par\'e9ntesis, crear un archivo llamado ejercicio3 que  contendr\'e1 el listado de usuarios conectados al sistema (orden who) y la lista de archivos del directorio  actual. \
+\
+(who; ls) > ejercicio3\
+\
+d) A\'f1adir, al final del archivo ejercicio3, el n\'famero de l\'edneas, palabras y caracteres del archivo  ejercicio1. Aseg\'farese de que, por ejemplo, si no existiera ejercicio1, los mensajes de error tambi\'e9n se  a\'f1adieran al final de ejercicio3. \
+\
+wc ejercicio1 2>> ejercicio3\
+\
+e) Con una sola orden chmod, cambiar los permisos de los archivos ejercicio1 y ejercicio3, de forma  que se quite el permiso de lectura al \'93grupo\'94 y se d\'e9 permiso de ejecuci\'f3n a las tres categor\'edas de  usuarios.\
+\
+chmod go-r, ugo+x ejercicio1 ejercicio3\
+}
